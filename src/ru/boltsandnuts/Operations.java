@@ -1,7 +1,5 @@
 package ru.boltsandnuts;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * Created by wenge on 21.02.2017.
  */

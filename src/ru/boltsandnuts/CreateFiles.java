@@ -8,7 +8,7 @@ import java.io.*;
 public class CreateFiles {
 
     public static final String SPACE = " ";
-    public static final String LINEBR = "\n";
+    public static final String LINE_BR = "\n";
 
     public static void createInput(String fileName, String countBolts, String lostBolts, String boltsPrice, String countNuts, String lostNuts, String nutsPrice) throws FileNotFoundException {
         File file = new File(fileName);
@@ -20,7 +20,7 @@ public class CreateFiles {
                 file.createNewFile();
             }
             try {
-                String infoBoltsAndNuts = countBolts + SPACE + lostBolts + SPACE + boltsPrice + LINEBR + countNuts + SPACE + lostNuts + SPACE + nutsPrice;
+                String infoBoltsAndNuts = countBolts + SPACE + lostBolts + SPACE + boltsPrice + LINE_BR + countNuts + SPACE + lostNuts + SPACE + nutsPrice;
                 writeInFile.print(infoBoltsAndNuts);
             } finally {
                 writeInFile.close();
