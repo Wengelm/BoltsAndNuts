@@ -2,42 +2,35 @@ package ru.boltsandnuts;
 
 import java.io.*;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * Created by wenge on 21.02.2017.
  */
-public class CreateFIles {
+public class CreateFiles {
 
+    public static final String SPACE = " ";
+    public static final String LINEBR = "\n";
 
-    public static void createInput(String fileName, String kBolts, String lBolts, String mBolts, String kNuts, String lNuts, String mNuts) throws FileNotFoundException {
+    public static void createInput(String fileName, String countBolts, String lostBolts, String boltsPrice, String countNuts, String lostNuts, String nutsPrice) throws FileNotFoundException {
         File file = new File(fileName);
+
         PrintWriter writeInFile = new PrintWriter(file.getAbsoluteFile());
 
         try {
-
             if (!file.exists()) {
                 file.createNewFile();
             }
-
             try {
-
-                String infoBoltsAndNuts = kBolts + " " + lBolts + " " + mBolts + "\n" + kNuts + " " + lNuts + " " + mNuts;
+                String infoBoltsAndNuts = countBolts + SPACE + lostBolts + SPACE + boltsPrice + LINEBR + countNuts + SPACE + lostNuts + SPACE + nutsPrice;
                 writeInFile.print(infoBoltsAndNuts);
-
-
             } finally {
                 writeInFile.close();
-
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-
     }
 
-    public static void createOutput(String fileName, String costOfLost) throws FileNotFoundException {
+    public static void createOutput(String fileName, String costOfLostDetails) throws FileNotFoundException {
 
         File file = new File(fileName);
         PrintWriter out = new PrintWriter(file.getAbsoluteFile());
@@ -46,21 +39,14 @@ public class CreateFIles {
             if (!file.exists()) {
                 file.createNewFile();
             }
-
             try {
-
-                out.print(costOfLost);
-
+                out.print(costOfLostDetails);
             } finally {
                 out.close();
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-
     }
-
-
 }
 

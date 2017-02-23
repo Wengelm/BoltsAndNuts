@@ -12,33 +12,29 @@ public class Operations {
         return lostItems;
     }
 
-    public static int lostPrice(int kBolts, int lBolts, int mBolts, int kNuts, int lNuts, int mNuts) throws NullPointerException {
+    public static int lostPrice(int countBolts, int loseBolts, int boltsPrice, int countNuts, int loseNuts, int nutsPrice) throws NullPointerException {
         int costOfLost;
         int costOfLostAvailableBolts;
-        int costOflostAvailableNuts;
+        int costOfLostAvailableNuts;
 
-        int lostBolts = lostItems(kBolts, lBolts);
-        int lostNuts = lostItems(kNuts, lNuts);
+        int lostBolts = lostItems(countBolts, loseBolts);
+        int lostNuts = lostItems(countNuts, loseNuts);
 
-        int costOfLostBolts = lostBolts * mBolts;
-        int costOfLostNuts = lostNuts * mNuts;
+        int costOfLostBolts = lostBolts * boltsPrice;
+        int costOfLostNuts = lostNuts * nutsPrice;
 
-        int aviableBolts = kBolts - lostBolts;
-        int aviableNuts = kNuts - lostNuts;
+        int availableBolts = countBolts - lostBolts;
+        int availableNuts = countNuts - lostNuts;
 
-        if (aviableBolts > aviableNuts) {
-            costOfLostAvailableBolts = aviableBolts - aviableNuts;
-            int lostavailableBolts1 = costOfLostAvailableBolts * mBolts;
-            costOfLost = lostavailableBolts1 + costOfLostBolts + costOfLostNuts;
+        if (availableBolts > availableNuts) {
+            costOfLostAvailableBolts = availableBolts - availableNuts;
+            int lostAvailableBolts1 = costOfLostAvailableBolts * boltsPrice;
+            costOfLost = lostAvailableBolts1 + costOfLostBolts + costOfLostNuts;
         } else {
-            costOflostAvailableNuts = aviableNuts - aviableBolts;
-            int lostAvailableNuts1 = costOflostAvailableNuts * mNuts;
+            costOfLostAvailableNuts = availableNuts - availableBolts;
+            int lostAvailableNuts1 = costOfLostAvailableNuts * nutsPrice;
             costOfLost = lostAvailableNuts1 + costOfLostBolts + costOfLostNuts;
         }
-
-
         return costOfLost;
-
-
     }
 }

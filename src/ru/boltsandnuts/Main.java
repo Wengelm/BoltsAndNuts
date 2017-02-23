@@ -1,8 +1,6 @@
 package ru.boltsandnuts;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -13,26 +11,28 @@ import java.util.List;
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        CreateFIles file = new CreateFIles();
-        Operations operations = new Operations();
+    public static final String COUNTBOLTS = "1000";
+    public static final String LOSTBOLTS = "10";
+    public static final String PRICEBOLTS = "100";
+    public static final String COUNTNUTS = "1200";
+    public static final String LOSTNUTS = "20";
+    public static final String PRICENUTS = "90";
+    public static final String INPUTTILENAME = "input.txt";
+    public static final String OUTPUTFILENAME = "output.txt";
 
-        file.createInput("input.txt", "1000", "10", "100", "1200", "20", "90");
+    public static void main(String[] args) throws IOException {
+        CreateFiles file = new CreateFiles();
+
+
+        file.createInput(INPUTTILENAME, COUNTBOLTS, LOSTBOLTS, PRICEBOLTS, COUNTNUTS, LOSTNUTS, PRICENUTS);
 
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
 
         int[] bolts = Arrays.stream(lines.get(0).split(" ")).mapToInt(Integer::parseInt).toArray();
         int[] nuts = Arrays.stream(lines.get(1).split(" ")).mapToInt(Integer::parseInt).toArray();
 
-      /*    int k1 = bolts[0];
-            int l1 = bolts[1];
-            int m1 = bolts[2];
-            int k2 = nuts[0];
-            int l2 = nuts[1];
-            int m2 = nuts[2];     */
-
-        String costOfLost = Integer.toString(operations.lostPrice(bolts[0], bolts[1], bolts[2], nuts[0], nuts[1], nuts[2]));
-        file.createOutput("output.txt", costOfLost);
+        String costOfLost = Integer.toString(Operations.lostPrice(bolts[0], bolts[1], bolts[2], nuts[0], nuts[1], nuts[2]));
+        file.createOutput(OUTPUTFILENAME, costOfLost);
 
 
     }
